@@ -97,10 +97,6 @@ service.interceptors.response.use(
       } else if (code === 500) {
         msg = '出错啦，请稍后访问'
       }
-      Toast({
-        message: msg,
-        position: 'top',
-      })
       return Promise.reject(new Error(msg))
     } else {
       if (response.config.method === 'post' || response.config.method === 'put' || response.config.method === 'delete') {
@@ -117,6 +113,7 @@ service.interceptors.response.use(
   error => {
     console.log(error.toJSON())
     console.log(error.response)
+    allowRequest(reqList, error.config.url)
     let msg = error.message
     let code
     if (error.response) {
