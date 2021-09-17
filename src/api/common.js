@@ -24,10 +24,3 @@ export function apiDealerReport(data) {
     data
   })
 }
-
-export function apiDealerBase() {
-  return request({
-    url: '/dealer/base',
-    method: 'get'
-  })
-}
